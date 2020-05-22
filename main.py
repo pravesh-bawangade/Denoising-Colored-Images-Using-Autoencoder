@@ -1,3 +1,9 @@
+"""
+Author: Pravesh Bawangade
+File Name: main.py
+
+"""
+
 import torch
 from torchvision import transforms
 from torch.autograd import Variable
@@ -9,6 +15,12 @@ import os
 
 
 def predict_image(image, model):
+    """
+    Predict function provide predicted output of noisy image.
+    :param image: Original Image
+    :param model: Model to use
+    :return: noisy_imgs , output
+    """
     noise_factor = 0.3
     image = Image.fromarray(image.astype('uint8'), 'RGB')
 
@@ -31,6 +43,11 @@ def predict_image(image, model):
 
 
 def main():
+    """
+    Main function to load data from file and store predicted output in given path.
+    Also display images on screen.
+    :return: None
+    """
     model = m.ConvDenoiser()
     model.eval()
     model.load_state_dict(torch.load('trained_models/train-epoch9.pth', map_location=torch.device('cpu')))

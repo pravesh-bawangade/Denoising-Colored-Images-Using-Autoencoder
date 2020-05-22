@@ -1,10 +1,22 @@
+"""
+Author: Pravesh Bawangade
+File Name: main.py
+
+"""
+
 import torch.nn as nn
 import torch.nn.functional as F
 
 
 # define the NN architecture
 class ConvDenoiser(nn.Module):
+    """
+    Network Architecture
+    """
     def __init__(self):
+        """
+        Defining Three CNN layers, A max Pooling layer, Three Transpose CNN layers and a output cnn layer.
+        """
         super(ConvDenoiser, self).__init__()
 
         # encoder layers #
@@ -30,6 +42,11 @@ class ConvDenoiser(nn.Module):
         self.conv_out = nn.Conv2d(32, 3, 3, padding=1)
 
     def forward(self, x):
+        """
+        Feed Forward function.
+        :param x: Input data
+        :return: x: output prediction
+        """
         ## encode ##
         # add hidden layers with relu activation function
         # and maxpooling after
